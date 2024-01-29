@@ -4,6 +4,7 @@ KAFKA_HOME=/u01/cnfkfk
 
 cat << EOF > $KAFKA_HOME/etc/schema-registry/schema-registry.properties
 listeners=${listeners:-http://0.0.0.0:8081 , https://0.0.0.0:8082}
+host.name=${HOST_NAME:-connect-worker-0}
 ssl.truststore.location=${SSL_TRUSTSTORE_LOCATION:-/u01/cnfkfk/etc/ssl/sr.truststore.jks}
 ssl.truststore.password=${SSL_TRUSTSTORE_PASSWORD:-password}
 ssl.keystore.location=${SSL_KEYSTORE_LOCATION:-/u01/cnfkfk/etc/ssl/sr.keystore.jks}
@@ -25,6 +26,7 @@ kafkastore.sasl.jaas.config=${KAFKASTORE_SASL_JAAS_CONFIG:-org.apache.kafka.comm
 inter.instance.protocol=${INTER_INSTANCE_PROTOCOL:-https} 
 access.control.allow.methods=${ACCESS_CONTROL_ALLOW_METHODS:-GET,POST,PUT,DELETE,OPTIONS,HEAD} 
 access.control.allow.origin=${ACCESS_CONTROL_ALLOW_ORIGIN:-*}
+schema.compatibility.level=${SCHEMA_COMPATIBILITY_LEVEL:-full}
 EOF
 
 sleep infinity

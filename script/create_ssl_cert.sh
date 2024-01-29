@@ -33,3 +33,12 @@ if [[ ! -f ${KEY_STORE} ]]; then
     echo "Generated keystore file is ${KEY_STORE} and ${TRUST_STORE}"
     cd /
 fi
+
+#keytool -keystore kafka.server.keystore.jks -alias localhost -keyalg RSA -validity {validity} -genkey
+#openssl req -new -x509 -keyout ca-key -out ca-cert -days {validity}
+#keytool -keystore kafka.client.truststore.jks -alias CARoot -importcert -file ca-cert
+#keytool -keystore kafka.server.truststore.jks -alias CARoot -importcert -file ca-cert
+#keytool -keystore kafka.server.keystore.jks -alias localhost -certreq -file cert-file
+#openssl x509 -req -CA ca-cert -CAkey ca-key -in cert-file -out cert-signed -days {validity} -CAcreateserial -passin pass:{ca-password}
+#keytool -keystore kafka.server.keystore.jks -alias CARoot -importcert -file ca-cert
+#keytool -keystore kafka.server.keystore.jks -alias localhost -importcert -file cert-signed
