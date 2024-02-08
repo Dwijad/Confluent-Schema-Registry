@@ -26,6 +26,7 @@ Build the docker image
 
     $ DOCKER_BUILDKIT=1 docker buildx build -t dwijad/kafka-connect:latest --no-cache --progress=plain .
     
+### Run
 
  ### Environment variables:
  
@@ -60,6 +61,7 @@ Build the docker image
  KAFKA_HEAP_OPTS   
   KAFKA_OPTS
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMjYxNDczODYsMjcyNjIxMzcwLDc4OD
-E2ODMwMiw0ODIyMjY1NTgsMTU1MzM2OTU3N119
+eyJoaXN0b3J5IjpbLTc0OTc0MDE4OCwtMjAyNjE0NzM4NiwyNz
+I2MjEzNzAsNzg4MTY4MzAyLDQ4MjIyNjU1OCwxNTUzMzY5NTc3
+XX0=
 -->
