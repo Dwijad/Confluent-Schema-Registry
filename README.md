@@ -71,10 +71,15 @@ Build the docker image
 
 ```
 export SCHEMA_REGISTRY_HOST_NAME
-```
+```        env:
+        # https://docs.confluent.io/6.0.0/schema-registry/docs/config.html#host-name
+        - name: SCHEMA_REGISTRY_HOST_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzAxMjQ5NTgzLC0xMDkwNjcyNzQzLDE2Nj
-Y4MDM5NDAsLTIwOTMyODc2ODUsMTA2NDEyOTE4NSwtMjAyNjE0
-NzM4NiwyNzI2MjEzNzAsNzg4MTY4MzAyLDQ4MjIyNjU1OCwxNT
-UzMzY5NTc3XX0=
+eyJoaXN0b3J5IjpbMTAzNjU0MjcwOCwzMDEyNDk1ODMsLTEwOT
+A2NzI3NDMsMTY2NjgwMzk0MCwtMjA5MzI4NzY4NSwxMDY0MTI5
+MTg1LC0yMDI2MTQ3Mzg2LDI3MjYyMTM3MCw3ODgxNjgzMDIsND
+gyMjI2NTU4LDE1NTMzNjk1NzddfQ==
 -->
