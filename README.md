@@ -1,7 +1,7 @@
 # Schema registry
 
 
-Docker Schema Registry image for the Confluent Platform using Oracle JDK 17.
+Docker Schema Registry image for the Confluent Platform using Oracle JDK 17. This image was created with the sole purpose of offering the [Confluent Open Source Platform](https://www.confluent.io/product/confluent-open-source/) running on top of [Oracle JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
 ### Supported tags and respective Dockerfile links
 
@@ -10,13 +10,12 @@ Docker Schema Registry image for the Confluent Platform using Oracle JDK 17.
 ### Summary:
 
 -   Debian "buster" image variant
--   Oracle JDK 8u152 addded, without MissionControl, VisualVM, JavaFX, ReadMe files, source archives, etc.
+-   Oracle JDK (build 17.0.10+11-LTS-240)
 -   Oracle Java Cryptography Extension added
--   Python 2.7.9-1 & pip 9.0.1 added
 -   SHA 256 sum checks for all downloads
 -   JAVA_HOME environment variable set up
 - 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzg4MTY4MzAyLDQ4MjIyNjU1OCwxNTUzMz
-Y5NTc3XX0=
+eyJoaXN0b3J5IjpbMTM4OTg4NTc1Nyw3ODgxNjgzMDIsNDgyMj
+I2NTU4LDE1NTMzNjk1NzddfQ==
 -->
