@@ -20,9 +20,10 @@ Docker Schema Registry image for the Confluent Platform using Oracle JDK 17. Thi
 To build from scratch, clone the repo and copy kafka keystore/truststore certificates and public certificate authority (CA) file of kafka broker to `script/ca` folder.
 
     $ git clone https://github.com/Dwijad/Confluent-Schema-Registry.git
-    $ copy {ca-cert, kafka.truststore.jks, kafka.keystore.jks} to ~/Dockerize-Kafka-Connect/script/ca 
-    $ DOCKER_BUILDKIT=1 docker buildx build -t dwijad/kafka-connect:latest --no-cache --progress=plain .
+    $ copy {ca-cert, kafka.truststore.jks, kafka.keystore.jks} to ~/Confluent-Schema-Registry/script/ca 
+
+Build
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzODA3NDE3Nyw3ODgxNjgzMDIsNDgyMj
-I2NTU4LDE1NTMzNjk1NzddfQ==
+eyJoaXN0b3J5IjpbLTEzOTEyNDEwNzMsNzg4MTY4MzAyLDQ4Mj
+IyNjU1OCwxNTUzMzY5NTc3XX0=
 -->
