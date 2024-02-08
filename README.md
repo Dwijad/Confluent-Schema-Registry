@@ -22,8 +22,11 @@ To build from scratch, clone the repo and copy kafka keystore/truststore certifi
     $ git clone https://github.com/Dwijad/Confluent-Schema-Registry.git
     $ copy {ca-cert, kafka.truststore.jks, kafka.keystore.jks} to ~/Confluent-Schema-Registry/script/ca 
 
-Build
+Build the docker image
+
+    $ DOCKER_BUILDKIT=1 docker buildx build -t dwijad/kafka-connect:latest --no-cache --progress=plain .
+    
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTEyNDEwNzMsNzg4MTY4MzAyLDQ4Mj
-IyNjU1OCwxNTUzMzY5NTc3XX0=
+eyJoaXN0b3J5IjpbLTQyNjY3ODc3MSw3ODgxNjgzMDIsNDgyMj
+I2NTU4LDE1NTMzNjk1NzddfQ==
 -->
