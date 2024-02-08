@@ -24,7 +24,7 @@ To build from scratch, clone the repo and copy kafka keystore/truststore certifi
 
 Build the docker image
 
-    $ DOCKER_BUILDKIT=1 docker buildx build -t dwijad/kafka-connect:latest --no-cache --progress=plain .
+    $ DOCKER_BUILDKIT=1 docker buildx build -t dwijad/schema-registry:latest --no-cache --progress=plain .
     
 ### Run
     $ docker run -d \
@@ -67,7 +67,7 @@ Build the docker image
  KAFKA_HEAP_OPTS   
   KAFKA_OPTS
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA2NDEyOTE4NSwtMjAyNjE0NzM4NiwyNz
-I2MjEzNzAsNzg4MTY4MzAyLDQ4MjIyNjU1OCwxNTUzMzY5NTc3
-XX0=
+eyJoaXN0b3J5IjpbLTIwOTMyODc2ODUsMTA2NDEyOTE4NSwtMj
+AyNjE0NzM4NiwyNzI2MjEzNzAsNzg4MTY4MzAyLDQ4MjIyNjU1
+OCwxNTUzMzY5NTc3XX0=
 -->
