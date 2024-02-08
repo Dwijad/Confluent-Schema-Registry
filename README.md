@@ -30,7 +30,7 @@ Build the docker image
     $ docker run -d \
     --name=schema-registry-0 \
     -e KAFKA_JMX_PORT="8080" \
-    -e SCHEMA_REGISTRY_JMX_OPTS='-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.rmi.port=$(KAFKA_JMX_PORT) -Djava.rmi.server.hostname="${HOSTNAME}" -javaagent:/u01/cnfkfk/etc/schema-registry/jmx_prometheus_javaagent-0.20.0.jar=$(KAFKA_JMX_PORT):/u01/cnfkfk/etc/schema-registry/jmx-schema-registry-prometheus.yml' \
+    -e SCHEMA_REGISTRY_JMX_OPTS="-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.rmi.port=$KAFKA_JMX_PORT -Djava.rmi.server.hostname=$HOSTNAME -javaagent:/u01/cnfkfk/etc/schema-registry/jmx_prometheus_javaagent-0.20.0.jar=$KAFKA_JMX_PORT:$KAFKA_HOME/etc/schema-registry/jmx-schema-registry-prometheus.yml" \
     -e SASL_USER="user1" \
     -e SASL_PASSWORD="password" \
     dwijad/schema-registry:latest
@@ -67,7 +67,7 @@ Build the docker image
  KAFKA_HEAP_OPTS   
   KAFKA_OPTS
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTMyODc2ODUsMTA2NDEyOTE4NSwtMj
-AyNjE0NzM4NiwyNzI2MjEzNzAsNzg4MTY4MzAyLDQ4MjIyNjU1
-OCwxNTUzMzY5NTc3XX0=
+eyJoaXN0b3J5IjpbMTY2NjgwMzk0MCwtMjA5MzI4NzY4NSwxMD
+Y0MTI5MTg1LC0yMDI2MTQ3Mzg2LDI3MjYyMTM3MCw3ODgxNjgz
+MDIsNDgyMjI2NTU4LDE1NTMzNjk1NzddfQ==
 -->
