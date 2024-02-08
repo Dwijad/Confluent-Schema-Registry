@@ -29,7 +29,12 @@ ARG kafka_version=3.5.0 \
     ACCESS_CONTROL_ALLOW_METHODS \
     ACCESS_CONTROL_ALLOW_ORIGIN \
     SCHEMA_COMPATIBILITY_LEVEL \
-    HOST_NAME
+    HOST_NAME \
+    KAFKA_JMX_PORT \
+    KAFKA_JMX_HOSTNAME \
+    SCHEMA_REGISTRY_JMX_OPTS \
+    KAFKA_HEAP_OPTS \
+    KAFKA_OPTS
 
 
 LABEL org.label-schema.name="Schema Registry" \
@@ -66,7 +71,12 @@ ENV KAFKA_VERSION=$kafka_version \
     ACCESS_CONTROL_ALLOW_METHODS=$ACCESS_CONTROL_ALLOW_METHODS \
     ACCESS_CONTROL_ALLOW_ORIGIN=$ACCESS_CONTROL_ALLOW_ORIGIN \
     SCHEMA_COMPATIBILITY_LEVEL=$SCHEMA_COMPATIBILITY_LEVEL \
-    HOST_NAME=$HOST_NAME
+    HOST_NAME=$HOST_NAME \
+    KAFKA_JMX_PORT=$KAFKA_JMX_PORT \
+    KAFKA_JMX_HOSTNAME=$KAFKA_JMX_HOSTNAME \
+    SCHEMA_REGISTRY_JMX_OPTS=$SCHEMA_REGISTRY_JMX_OPTS \
+    KAFKA_HEAP_OPTS=$KAFKA_HEAP_OPTS \
+    KAFKA_OPTS=$KAFKA_OPTS
 
 ENV PATH=${PATH}:${KAFKA_HOME}/bin
 USER root
@@ -91,47 +101,40 @@ RUN set -eux  \
     && chmod -R 755  /u01/cnfkfk 
 
 USER kafka
-WORKDIR /u01/cnfkfk
+WORKDIR $KAFKA_HOME
 
-ADD --chown=kafka:kafka --chmod=755 https://packages.confluent.io/archive/7.5/confluent-community-7.5.3.tar.gz /u01/cnfkfk/
-ADD --chown=kafka:kafka --chmod=755 https://download.oracle.com/java/17/archive/jdk-17.0.10_linux-x64_bin.tar.gz /u01/cnfkfk/
+ADD --chown=kafka:kafka --chmod=755 https://packages.confluent.io/archive/7.5/confluent-community-7.5.3.tar.gz $KAFKA_HOME
+ADD --chown=kafka:kafka --chmod=755 https://download.oracle.com/java/17/archive/jdk-17.0.10_linux-x64_bin.tar.gz $KAFKA_HOME
+ADD --chown=kafka:kafka --chmod=755 https://repo.maven.apache.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.20.0/jmx_prometheus_javaagent-0.20.0.jar $KAFKA_HOME/etc/schema-registry/
+ADD --chown=kafka:kafka --chmod=755 config/jmx-schema-registry-prometheus.yml $KAFKA_HOME/etc/schema-registry
 
-RUN ls -l /u01/cnfkfk && \
-    tar -zx -C /u01/cnfkfk/java --strip-components=1 -f jdk-17.0.10_linux-x64_bin.tar.gz && \
+RUN tar -zx -C $KAFKA_HOME/java --strip-components=1 -f jdk-17.0.10_linux-x64_bin.tar.gz && \
     rm -f jdk-17.0.10_linux-x64_bin.tar.gz && \
-    tar -zx -C /u01/cnfkfk --strip-components=1 -f confluent-community-7.5.3.tar.gz && \
+    tar -zx -C $KAFKA_HOME --strip-components=1 -f confluent-community-7.5.3.tar.gz && \
     rm -rf confluent* && \
-    chown -R kafka:kafka /u01/cnfkfk && \
-    mkdir -p /u01/cnfkfk/etc/ssl
+    chown -R kafka:kafka $KAFKA_HOME && \
+    mkdir -p $KAFKA_HOME/etc/ssl
 
-ADD --chown=kafka:kafka --chmod=755 script/create_ssl_cert.sh $KAFKA_HOME/etc/ssl
+ADD --chown=kafka:kafka --chmod=755 script/generate_pem_cert.sh $KAFKA_HOME/etc/ssl
 ADD --chown=kafka:kafka --chmod=755 script/ca/ $KAFKA_HOME/etc/ssl/
 
-WORKDIR /u01/cnfkfk/
+WORKDIR $KAFKA_HOME
 
-ENV PATH="${PATH}:/u01/cnfkfk/java/bin:/u01/cnfkfk/bin" 
-ENV JAVA_HOME="/u01/cnfkfk/java"
-ENV CNFKC_HOME="/u01/cnfkfk/" 
-ENV CLASSPATH="${CLASSPATH}:/u01/cnfkc/confluent-kfk/share/java/kafka/*"
+ENV PATH="${PATH}:$KAFKA_HOME/java/bin:$KAFKA_HOME/bin" 
+ENV JAVA_HOME="$KAFKA_HOME/java"
 
-WORKDIR /u01/cnfkfk/etc/ssl
 
-RUN chmod u+x $KAFKA_HOME/etc/ssl/create_ssl_cert.sh \    
-    && $KAFKA_HOME/etc/ssl/create_ssl_cert.sh  \
-    && ls -l 
+WORKDIR $KAFKA_HOME/etc/ssl
 
-RUN ls -l /u01/cnfkfk/java \
-    && ls -l /u01/cnfkfk/etc/ \
-    && java -version \
-    && env 
+
+RUN chmod u+x $KAFKA_HOME/etc/ssl/generate_pem_cert.sh \    
+    && $KAFKA_HOME/etc/ssl/generate_pem_cert.sh  
+
 
 WORKDIR /u01/cnfkfk
 ADD --chown=kafka:kafka --chmod=755 script/start.sh $KAFKA_HOME
 
-# RUN $KAFKA_HOME/start.sh
 
 CMD ["/bin/bash"]
-
-# RUN $KAFKA_HOME/start.sh
 
 ENTRYPOINT ["/bin/bash" , "start.sh"]
