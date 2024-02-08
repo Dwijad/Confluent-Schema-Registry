@@ -1,7 +1,7 @@
 # Schema registry
 
 
-Docker Schema Registry image for the Confluent Platform using Oracle JDK 17. This image was created with the purpose of offering the [Confluent Open Source Platform](https://www.confluent.io/product/confluent-open-source/) running on top of [Oracle JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) apart from integrating kafkastore keystore/truststore to the 
+Docker Schema Registry image for the Confluent Platform using Oracle JDK 17. This image was created with the purpose of offering the [Confluent Open Source Platform](https://www.confluent.io/product/confluent-open-source/) running on top of [Oracle JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) apart from integrating kafkastore keystore/truststore to the schema registry.
 
 ### Supported tags and respective Dockerfile links
 
@@ -14,7 +14,15 @@ Docker Schema Registry image for the Confluent Platform using Oracle JDK 17. Thi
 -   Oracle Java Cryptography Extension added
 -   SHA 256 sum checks for all downloads
 -   JAVA_HOME environment variable set up
+
+### Build
+
+To build from scratch, clone the repo and copy kafka keystore/truststore certificates and public certificate authority (CA) file of kafka broker to `script/ca` folder.
+
+    $ git clone https://github.com/Dwijad/Confluent-Schema-Registry.git
+    $ copy {ca-cert, kafka.truststore.jks, kafka.keystore.jks} to ~/Dockerize-Kafka-Connect/script/ca 
+    $ DOCKER_BUILDKIT=1 docker buildx build -t dwijad/kafka-connect:latest --no-cache --progress=plain .
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MTE3ODcwMTAsNzg4MTY4MzAyLDQ4Mj
-IyNjU1OCwxNTUzMzY5NTc3XX0=
+eyJoaXN0b3J5IjpbMTUzODA3NDE3Nyw3ODgxNjgzMDIsNDgyMj
+I2NTU4LDE1NTMzNjk1NzddfQ==
 -->
