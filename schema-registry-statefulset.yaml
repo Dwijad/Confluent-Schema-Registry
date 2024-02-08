@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  creationTimestamp: null
+  labels:
+    app: schema-registry
+  name: schema-registry
+spec:
+  serviceName: "schema-registry"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: schema-registry
+  template:
+    metadata:
+      labels:
+        app: schema-registry
+    spec:
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+      - image: dwijad/schema-registry:latest
+        name: schema-registry
+        env:
+        - name: KAFKA_JMX_PORT
+          value: "8080"
+        - name: SCHEMA_REGISTRY_JMX_OPTS
+          value: '-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.rmi.port=$(KAFKA_JMX_PORT) -Djava.rmi.server.hostname="${HOSTNAME}" -javaagent:/u01/cnfkfk/etc/schema-registry/jmx_prometheus_javaagent-0.20.0.jar=$(KAFKA_JMX_PORT):/u01/cnfkfk/etc/schema-registry/jmx-schema-registry-prometheus.yml'
+        - name: SASL_USER
+          value: "user1"
+        - name: SASL_PASSWORD
+          value: "password"
+        resources:  
+          requests:
+            memory: "1Gi"
+            cpu: "0.5"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8081
+          initialDelaySeconds: 25
+          periodSeconds: 5
+#      imagePullSecrets:
+#        - name: regcred
