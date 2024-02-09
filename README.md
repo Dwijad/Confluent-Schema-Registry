@@ -1,6 +1,5 @@
 # Schema registry
 
-
 Docker Schema Registry image for the Confluent Platform using Oracle JDK 17. This image was created with the purpose of offering the [Confluent Open Source Platform](https://www.confluent.io/product/confluent-open-source/) running on top of [Oracle JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) apart from integrating kafkastore keystore/truststore to the schema registry.
 
 ### Supported tags and respective Dockerfile links
@@ -13,7 +12,7 @@ Docker Schema Registry image for the Confluent Platform using Oracle JDK 17. Thi
 -   Oracle JDK (build 17.0.10+11-LTS-240)
 -   Oracle Java Cryptography Extension added
 -   SHA 256 sum checks for all downloads
--   JAVA_HOME environment variable set up
+-   JAVA_HOME environment variable/net tools set up
 
 ### Build
 
@@ -152,13 +151,27 @@ To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` a
 
 ### Kubernetes
 
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: schema-registry-0
+      name: schema-registry-0
+    spec:
+      containers:
+      - image: dwijad/schema-registry:latest
+        name: schema-registry-0
+        env:
+        - name: SCHEMA_REGISTRY_JMX_PORT
+          value: "8080"
+        - name: SCHEMA_REGISTRY_JMX_ENABLED
+          value: "1"
+        resources: {}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+    status: {}
 
-export SCHEMA_REGISTRY_HOST_NAME
-       env:
-        - name: SCHEMA_REGISTRY_HOST_NAME
-          valueFrom:
-            fieldRef:
-              fieldPath: status.podIP
 #### Test
 
     $ curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" --data '{"schema": "{\"type\":\"record\",\"name\":\"Payment\",\"namespace\":\"io.confluent.examples.clients.basicavro\",\"fields\":[{\"name\":\"id\",\"type\":\"string\"},{\"name\":\"amount\",\"type\":\"double\"}]}"}' http://schema-registry-0:8081/subjects/test-value/versions
@@ -179,10 +192,10 @@ export SCHEMA_REGISTRY_HOST_NAME
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzMTc2MjU3NiwtMTg3NjIzODQ3MywtMz
-M5NDUyOTU4LC0xNTQ4NDAzNTkyLDExNjcyNDMzMzcsMTAzNjU0
-MjcwOCwzMDEyNDk1ODMsLTEwOTA2NzI3NDMsMTY2NjgwMzk0MC
-wtMjA5MzI4NzY4NSwxMDY0MTI5MTg1LC0yMDI2MTQ3Mzg2LDI3
-MjYyMTM3MCw3ODgxNjgzMDIsNDgyMjI2NTU4LDE1NTMzNjk1Nz
-ddfQ==
+eyJoaXN0b3J5IjpbLTE4MTAwNzE2MTMsLTMzMTc2MjU3NiwtMT
+g3NjIzODQ3MywtMzM5NDUyOTU4LC0xNTQ4NDAzNTkyLDExNjcy
+NDMzMzcsMTAzNjU0MjcwOCwzMDEyNDk1ODMsLTEwOTA2NzI3ND
+MsMTY2NjgwMzk0MCwtMjA5MzI4NzY4NSwxMDY0MTI5MTg1LC0y
+MDI2MTQ3Mzg2LDI3MjYyMTM3MCw3ODgxNjgzMDIsNDgyMjI2NT
+U4LDE1NTMzNjk1NzddfQ==
 -->
