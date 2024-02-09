@@ -114,12 +114,18 @@ To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` a
     Description: The security protocol to use when connecting with Kafka, the underlying persistent storage.
     
     Name:   INTER_INSTANCE_PROTOCOL  
-    Default value: SASL_SSL
-    Description: The security protocol to use when connecting with Kafka, the underlying persistent storage.
+    Default value: http
+    Description: The protocol used while making calls between the instances of Schema Registry.
     
-    
- ACCESS_CONTROL_ALLOW_METHODS
- ACCESS_CONTROL_ALLOW_ORIGIN
+    Name:   ACCESS_CONTROL_ALLOW_METHODS  
+    Default value: GET,POST,PUT,DELETE,OPTIONS,HEAD
+    Description: Set value to Jetty Access-Control-Allow-Origin header for specified methods.
+       
+    Name:   ACCESS_CONTROL_ALLOW_METHODS  
+    Default value: GET,POST,PUT,DELETE,OPTIONS,HEAD
+    Description: Set value to Jetty Access-Control-Allow-Origin header for specified methods.
+     
+ 
  SCHEMA_COMPATIBILITY_LEVEL   
  HOST_NAME
  KAFKA_JMX_PORT
@@ -139,9 +145,9 @@ export SCHEMA_REGISTRY_HOST_NAME
             fieldRef:
               fieldPath: status.podIP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjY5OTU3NDkzLDExNjcyNDMzMzcsMTAzNj
-U0MjcwOCwzMDEyNDk1ODMsLTEwOTA2NzI3NDMsMTY2NjgwMzk0
-MCwtMjA5MzI4NzY4NSwxMDY0MTI5MTg1LC0yMDI2MTQ3Mzg2LD
-I3MjYyMTM3MCw3ODgxNjgzMDIsNDgyMjI2NTU4LDE1NTMzNjk1
-NzddfQ==
+eyJoaXN0b3J5IjpbMTUyMDIxNzUxMSwxMTY3MjQzMzM3LDEwMz
+Y1NDI3MDgsMzAxMjQ5NTgzLC0xMDkwNjcyNzQzLDE2NjY4MDM5
+NDAsLTIwOTMyODc2ODUsMTA2NDEyOTE4NSwtMjAyNjE0NzM4Ni
+wyNzI2MjEzNzAsNzg4MTY4MzAyLDQ4MjIyNjU1OCwxNTUzMzY5
+NTc3XX0=
 -->
