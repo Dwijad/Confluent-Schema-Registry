@@ -54,10 +54,14 @@ To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` a
     Description: Schema registry version
      
     Name: LISTENERS 
-    Default value: 3.5.0
+    Default value: http://0.0.0.0:8081, https://0.0.0.0:8082
     Description: Comma-separated list of listeners that listen for API requests over either HTTP or HTTPS.
 
- LISTENERS 
+    Name: SSL_KEYSTORE_LOCATION 
+    Default value: /u01/cnfkfk/etc/ssl/kafka-broker-0.keystore.jks
+    Description: Keystore file
+
+
  SSL_KEYSTORE_LOCATION   
  SSL_KEYSTORE_PASSWORD
  SSL_KEY_PASSWORD
@@ -96,7 +100,7 @@ export SCHEMA_REGISTRY_HOST_NAME
             fieldRef:
               fieldPath: status.podIP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM1MzE1MjYzMywxMTY3MjQzMzM3LDEwMz
+eyJoaXN0b3J5IjpbMTkyMTM3MjE5OSwxMTY3MjQzMzM3LDEwMz
 Y1NDI3MDgsMzAxMjQ5NTgzLC0xMDkwNjcyNzQzLDE2NjY4MDM5
 NDAsLTIwOTMyODc2ODUsMTA2NDEyOTE4NSwtMjAyNjE0NzM4Ni
 wyNzI2MjEzNzAsNzg4MTY4MzAyLDQ4MjIyNjU1OCwxNTUzMzY5
