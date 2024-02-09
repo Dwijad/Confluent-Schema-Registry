@@ -107,11 +107,17 @@ To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` a
    
     Name:  KAFKASTORE_TOPIC 
     Default value: _schemas
-    Description: Kafka broker endpoint 
+    Description: The durable single partition topic that acts as the durable log for the data.
         
-  
- KAFKASTORE_SECURITY_PROTOCOL   
- INTER_INSTANCE_PROTOCOL   
+    Name:   KAFKASTORE_SECURITY_PROTOCOL  
+    Default value: SASL_SSL
+    Description: The security protocol to use when connecting with Kafka, the underlying persistent storage.
+    
+    Name:   INTER_INSTANCE_PROTOCOL  
+    Default value: SASL_SSL
+    Description: The security protocol to use when connecting with Kafka, the underlying persistent storage.
+    
+    
  ACCESS_CONTROL_ALLOW_METHODS
  ACCESS_CONTROL_ALLOW_ORIGIN
  SCHEMA_COMPATIBILITY_LEVEL   
@@ -133,9 +139,9 @@ export SCHEMA_REGISTRY_HOST_NAME
             fieldRef:
               fieldPath: status.podIP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NTk0NDQ5NTAsMTE2NzI0MzMzNywxMD
-M2NTQyNzA4LDMwMTI0OTU4MywtMTA5MDY3Mjc0MywxNjY2ODAz
-OTQwLC0yMDkzMjg3Njg1LDEwNjQxMjkxODUsLTIwMjYxNDczOD
-YsMjcyNjIxMzcwLDc4ODE2ODMwMiw0ODIyMjY1NTgsMTU1MzM2
-OTU3N119
+eyJoaXN0b3J5IjpbNjY5OTU3NDkzLDExNjcyNDMzMzcsMTAzNj
+U0MjcwOCwzMDEyNDk1ODMsLTEwOTA2NzI3NDMsMTY2NjgwMzk0
+MCwtMjA5MzI4NzY4NSwxMDY0MTI5MTg1LC0yMDI2MTQ3Mzg2LD
+I3MjYyMTM3MCw3ODgxNjgzMDIsNDgyMjI2NTU4LDE1NTMzNjk1
+NzddfQ==
 -->
