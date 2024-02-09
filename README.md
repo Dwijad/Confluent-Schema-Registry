@@ -1,6 +1,5 @@
 # Schema registry
 
-
 Docker Schema Registry image for the Confluent Platform using Oracle JDK 17. This image was created with the purpose of offering the [Confluent Open Source Platform](https://www.confluent.io/product/confluent-open-source/) running on top of [Oracle JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) apart from integrating kafkastore keystore/truststore to the schema registry.
 
 ### Supported tags and respective Dockerfile links
@@ -13,7 +12,7 @@ Docker Schema Registry image for the Confluent Platform using Oracle JDK 17. Thi
 -   Oracle JDK (build 17.0.10+11-LTS-240)
 -   Oracle Java Cryptography Extension added
 -   SHA 256 sum checks for all downloads
--   JAVA_HOME environment variable set up
+-   JAVA_HOME environment variable and net tools set up
 
 ### Build
 
@@ -29,57 +28,177 @@ Build the docker image
 ### Run
     $ docker run -d \
     --name=schema-registry-0 \
-    -e KAFKA_JMX_PORT="8080" \
-    -e SCHEMA_REGISTRY_JMX_OPTS="-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.rmi.port=$KAFKA_JMX_PORT -Djava.rmi.server.hostname=$HOSTNAME -javaagent:/u01/cnfkfk/etc/schema-registry/jmx_prometheus_javaagent-0.20.0.jar=$KAFKA_JMX_PORT:$KAFKA_HOME/etc/schema-registry/jmx-schema-registry-prometheus.yml" \
-    -e SASL_USER="user1" \
-    -e SASL_PASSWORD="password" \
+    -e SCHEMA_REGISTRY_JMX_PORT="8080" \
+    -e SCHEMA_REGISTRY_JMX_ENABLED="1" \
     dwijad/schema-registry:latest
+
+To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` and `SCHEMA_REGISTRY_JMX_ENABLED` environment vriable.
+
  ### Environment variables:
+
+    Name: UID
+    Default value: 1000
+    Description: User ID used to build Dockerfile   
+
+    Name: GID
+    Default value: 1000
+    Description: Group ID used to build Dockerfile
+
+    Name: USERNAME 
+    Default value: kafka
+    Description: Kafka files/folder owner 
+    
+    Name: SCHEMA_REGISTRY_VERSION 
+    Default value: 3.5.0
+    Description: Schema registry version
+     
+    Name: LISTENERS 
+    Default value: http://0.0.0.0:8081, https://0.0.0.0:8082
+    Description: Comma-separated list of listeners that listen for API requests over either HTTP or HTTPS.
+
+    Name: SSL_KEYSTORE_LOCATION 
+    Default value: /u01/cnfkfk/etc/ssl/kafka-broker-0.keystore.jks
+    Description: SSL Keystore file
+
+    Name: SSL_KEYSTORE_PASSWORD 
+    Default value: password
+    Description: SSL Keystore password
+  
+    Name:  SSL_TRUSTSTORE_LOCATION 
+    Default value: /u01/cnfkfk/etc/ssl/kafka.truststore.jks
+    Description: SSL truststore file
  
- KAFKA_VERSION
- SCALA_VERSION
- SCHEMA_REGISTRY_VERSION
- LISTENERS 
- SSL_KEYSTORE_LOCATION   
- SSL_KEYSTORE_PASSWORD
- SSL_KEY_PASSWORD
- SSL_TRUSTSTORE_PASSWORD   
- SSL_TRUSTSTORE_LOCATION   
- SSL_CLIENT_AUTH   
- SSL_ENDPOINT_IDENTIFICATION_ALGORITHM    
- KAFKASTORE_SSL_KEY_PASSWORD   
- KAFKASTORE_SSL_KEYSTORE_LOCATION   
- KAFKASTORE_SSL_KEYSTORE_PASSWORD   
- KAFKASTORE_SSL_TRUSTSTORE_LOCATION    
- KAFKASTORE_SSL_TRUSTSTORE_PASSWORD   
- KAFKASTORE_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM   
- KAFKASTORE_BOOTSTRAP_SERVERS   
- KAFKASTORE_TOPIC   
- KAFKASTORE_SECURITY_PROTOCOL   
- INTER_INSTANCE_PROTOCOL   
- ACCESS_CONTROL_ALLOW_METHODS
- ACCESS_CONTROL_ALLOW_ORIGIN
- SCHEMA_COMPATIBILITY_LEVEL   
- HOST_NAME
- KAFKA_JMX_PORT
- KAFKA_JMX_HOSTNAME   
- SCHEMA_REGISTRY_JMX_OPTS   
- KAFKA_HEAP_OPTS   
-  KAFKA_OPTS
+    Name:  SSL_CLIENT_AUTH 
+    Default value: false
+    Description: Whether or not to require the HTTPS client to authenticate via the server’s trust store.
+
+    Name:  SSL_ENDPOINT_IDENTIFICATION_ALGORITHM
+    Default value: Empty string
+    Description: The endpoint identification algorithm to validate the server hostname using the server certificate.
+    
+    Name:  KAFKASTORE_SSL_KEY_PASSWORD
+    Default value: password
+    Description: Kafkastore key password
+    
+    Name:  KAFKASTORE_SSL_KEYSTORE_LOCATION 
+    Default value: /u01/cnfkfk/etc/ssl/kafka-broker-0.keystore.jks
+    Description: Kafkastore SSL keystore location 
+    
+    Name:  KAFKASTORE_SSL_KEYSTORE_PASSWORD 
+    Default value: password
+    Description: Kafkastore SSL keystore password 
+    
+    Name:  KAFKASTORE_SSL_TRUSTSTORE_LOCATION 
+    Default value: /u01/cnfkfk/etc/ssl/kafka.truststore.jks
+    Description: Kafkastore SSL truststore location
+    
+    Name:  KAFKASTORE_SSL_TRUSTSTORE_PASSWORD
+    Default value: password
+    Description: Kafkastore SSL truststore password    
+
+    Name:  KAFKASTORE_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM 
+    Default value: Empty string
+    Description: The endpoint identification algorithm to validate the kafka server hostname using the server certificate.
+        
+    Name:  KAFKASTORE_BOOTSTRAP_SERVERS 
+    Default value: test-kafka.default.svc.cluster.local:9092
+    Description: Kafka broker endpoint 
+   
+    Name:  KAFKASTORE_TOPIC 
+    Default value: _schemas
+    Description: The durable single partition topic that acts as the durable log for the data.
+        
+    Name:   KAFKASTORE_SECURITY_PROTOCOL  
+    Default value: SASL_SSL
+    Description: The security protocol to use when connecting with Kafka, the underlying persistent storage.
+    
+    Name:   INTER_INSTANCE_PROTOCOL  
+    Default value: http
+    Description: The protocol used while making calls between the instances of Schema Registry.
+    
+    Name:   ACCESS_CONTROL_ALLOW_METHODS  
+    Default value: GET,POST,PUT,DELETE,OPTIONS,HEAD
+    Description: Set value to Jetty Access-Control-Allow-Origin header for specified methods.
+       
+    Name:  ACCESS_CONTROL_ALLOW_ORIGIN
+    Default value: *
+    Description: Set value for Jetty `Access-Control-Allow-Origin` header
+     
+    Name:   SCHEMA_COMPATIBILITY_LEVEL   
+    Default value: full
+    Description: The schema compatibility type.
+    
+    Name:   SCHEMA_REGISTRY_JMX_OPTS   
+    Default value: "-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.rmi.port=8080 -Djava.rmi.server.hostname=schema-registry-0 -javaagent:/u01/cnfkfk/etc/schema-registry/jmx_prometheus_javaagent-0.20.0.jar=8080:/u01/cnfkfk/etc/schema-registry/jmx-schema-registry-prometheus.yml"
+    Description: JMX options. Use this variable to override the default JMX options
+
+    Name:   SCHEMA_REGISTRY_JMX_ENABLED   
+    Default value: None
+    Description: Whether JMX should be enabled or not.
+
+    Name:   SCHEMA_REGISTRY_HOST_NAME   
+    Default value: Default hostname of the container.
+    Description: Hostname of the schema registry server.         
+
+    Name:   SCHEMA_REGISTRY_JMX_HOSTNAME  
+    Default value: Default hostname of the container.
+    Description: JMX Hostname of the schema registry server. 
+
+    Name:   SCHEMA_REGISTRY_JMX_PORT 
+    Default value: 8080
+    Description: Schema registry JMX port.
+
 
 ### Kubernetes
 
-```
-export SCHEMA_REGISTRY_HOST_NAME
-```        env:
-        # https://docs.confluent.io/6.0.0/schema-registry/docs/config.html#host-name
-        - name: SCHEMA_REGISTRY_HOST_NAME
-          valueFrom:
-            fieldRef:
-              fieldPath: status.podIP
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: schema-registry-0
+      name: schema-registry-0
+    spec:
+      containers:
+      - image: dwijad/schema-registry:latest
+        name: schema-registry-0
+        env:
+        - name: SCHEMA_REGISTRY_JMX_PORT
+          value: "8080"
+        - name: SCHEMA_REGISTRY_JMX_ENABLED
+          value: "1"
+        resources: {}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+    status: {}
+
+#### Test
+
+    $ curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" --data '{"schema": "{\"type\":\"record\",\"name\":\"Payment\",\"namespace\":\"io.confluent.examples.clients.basicavro\",\"fields\":[{\"name\":\"id\",\"type\":\"string\"},{\"name\":\"amount\",\"type\":\"double\"}]}"}' http://schema-registry-0:8081/subjects/test-value/versions
+    {"id":1}
+    
+    $ curl -s "http://schema-registry-0:8081/subjects/" | jq
+    [
+      "test-value"
+    ]
+    
+    $ curl -s "http://schema-registry-0:8081/subjects/test-value/versions/1"|jq '.'
+    {
+      "subject": "test-value",
+      "version": 1,
+      "id": 1,
+      "schema": "{\"type\":\"record\",\"name\":\"Payment\",\"namespace\":\"io.confluent.examples.clients.basicavro\",\"fields\":[{\"name\":\"id\",\"type\":\"string\"},{\"name\":\"amount\",\"type\":\"double\"}]}"
+    }
+
+### References
+
+ - https://docs.confluent.io/platform/current/schema-registry/index.html
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzNjU0MjcwOCwzMDEyNDk1ODMsLTEwOT
-A2NzI3NDMsMTY2NjgwMzk0MCwtMjA5MzI4NzY4NSwxMDY0MTI5
-MTg1LC0yMDI2MTQ3Mzg2LDI3MjYyMTM3MCw3ODgxNjgzMDIsND
-gyMjI2NTU4LDE1NTMzNjk1NzddfQ==
+eyJoaXN0b3J5IjpbMTQ2NjYzMTM1MSwtMzMxNzYyNTc2LC0xOD
+c2MjM4NDczLC0zMzk0NTI5NTgsLTE1NDg0MDM1OTIsMTE2NzI0
+MzMzNywxMDM2NTQyNzA4LDMwMTI0OTU4MywtMTA5MDY3Mjc0My
+wxNjY2ODAzOTQwLC0yMDkzMjg3Njg1LDEwNjQxMjkxODUsLTIw
+MjYxNDczODYsMjcyNjIxMzcwLDc4ODE2ODMwMiw0ODIyMjY1NT
+gsMTU1MzM2OTU3N119
 -->
