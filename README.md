@@ -30,10 +30,10 @@ Build the docker image
     $ docker run -d \
     --name=schema-registry-0 \
     -e KAFKA_JMX_PORT="8080" \
-    -e SCHEMA_REGISTRY_JMX_OPTS="-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.rmi.port=$KAFKA_JMX_PORT -Djava.rmi.server.hostname=$HOSTNAME -javaagent:/u01/cnfkfk/etc/schema-registry/jmx_prometheus_javaagent-0.20.0.jar=$KAFKA_JMX_PORT:$KAFKA_HOME/etc/schema-registry/jmx-schema-registry-prometheus.yml" \
-    -e SASL_USER="user1" \
-    -e SASL_PASSWORD="password" \
+    -e SCHEMA_REGISTRY_JMX_ENABLED="1" \
     dwijad/schema-registry:latest
+
+To disable JMX unset run the docker command without passing  
  ### Environment variables:
  
  KAFKA_VERSION
@@ -78,8 +78,8 @@ export SCHEMA_REGISTRY_HOST_NAME
             fieldRef:
               fieldPath: status.podIP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzNjU0MjcwOCwzMDEyNDk1ODMsLTEwOT
-A2NzI3NDMsMTY2NjgwMzk0MCwtMjA5MzI4NzY4NSwxMDY0MTI5
-MTg1LC0yMDI2MTQ3Mzg2LDI3MjYyMTM3MCw3ODgxNjgzMDIsND
-gyMjI2NTU4LDE1NTMzNjk1NzddfQ==
+eyJoaXN0b3J5IjpbLTE1NTg5NDA5NTcsMTAzNjU0MjcwOCwzMD
+EyNDk1ODMsLTEwOTA2NzI3NDMsMTY2NjgwMzk0MCwtMjA5MzI4
+NzY4NSwxMDY0MTI5MTg1LC0yMDI2MTQ3Mzg2LDI3MjYyMTM3MC
+w3ODgxNjgzMDIsNDgyMjI2NTU4LDE1NTMzNjk1NzddfQ==
 -->
