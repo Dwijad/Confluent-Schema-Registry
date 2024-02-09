@@ -130,12 +130,12 @@ To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` a
     Description: The schema compatibility type.
     
     Name:   SCHEMA_REGISTRY_JMX_OPTS   
-    Default value: full
+    Default value: "-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.rmi.port=8080 -Djava.rmi.server.hostname=schema-registry-0 -javaagent:/u01/cnfkfk/etc/schema-registry/jmx_prometheus_javaagent-0.20.0.jar=8080:/u01/cnfkfk/etc/schema-registry/jmx-schema-registry-prometheus.yml"
     Description: JMX options. Use this variable to override the default JMX options
 
     Name:   SCHEMA_REGISTRY_JMX_ENABLED   
-    Default value: full
-    Description: The schema compatibility type.
+    Default value: None
+    Description: Whether JMX should be enabled or not.
 
     Name:   SCHEMA_REGISTRY_HOST_NAME   
     Default value: full
@@ -161,9 +161,9 @@ export SCHEMA_REGISTRY_HOST_NAME
             fieldRef:
               fieldPath: status.podIP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM3MDA2OTY0LC0xNTQ4NDAzNTkyLDExNj
-cyNDMzMzcsMTAzNjU0MjcwOCwzMDEyNDk1ODMsLTEwOTA2NzI3
-NDMsMTY2NjgwMzk0MCwtMjA5MzI4NzY4NSwxMDY0MTI5MTg1LC
-0yMDI2MTQ3Mzg2LDI3MjYyMTM3MCw3ODgxNjgzMDIsNDgyMjI2
-NTU4LDE1NTMzNjk1NzddfQ==
+eyJoaXN0b3J5IjpbMTM0MzIyNTU2OCwtMTU0ODQwMzU5MiwxMT
+Y3MjQzMzM3LDEwMzY1NDI3MDgsMzAxMjQ5NTgzLC0xMDkwNjcy
+NzQzLDE2NjY4MDM5NDAsLTIwOTMyODc2ODUsMTA2NDEyOTE4NS
+wtMjAyNjE0NzM4NiwyNzI2MjEzNzAsNzg4MTY4MzAyLDQ4MjIy
+NjU1OCwxNTUzMzY5NTc3XX0=
 -->
