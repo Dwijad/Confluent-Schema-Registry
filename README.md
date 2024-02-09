@@ -73,9 +73,14 @@ To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` a
     Default value: false
     Description: Whether or not to require the HTTPS client to authenticate via the server’s trust store.
 
- 
- SSL_CLIENT_AUTH   
- SSL_ENDPOINT_IDENTIFICATION_ALGORITHM    
+    Name:  SSL_ENDPOINT_IDENTIFICATION_ALGORITHM
+    Default value: Empty string
+    Description: The endpoint identification algorithm to validate the server hostname using the server certificate.
+    
+    Name:  KAFKASTORE_SSL_KEY_PASSWORD
+    Default value: password
+    Description: The endpoint identification algorithm to validate the server hostname using the server certificate. 
+  
  KAFKASTORE_SSL_KEY_PASSWORD   
  KAFKASTORE_SSL_KEYSTORE_LOCATION   
  KAFKASTORE_SSL_KEYSTORE_PASSWORD   
@@ -107,9 +112,9 @@ export SCHEMA_REGISTRY_HOST_NAME
             fieldRef:
               fieldPath: status.podIP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExOTA1NjEwNzIsMTE2NzI0MzMzNywxMD
-M2NTQyNzA4LDMwMTI0OTU4MywtMTA5MDY3Mjc0MywxNjY2ODAz
-OTQwLC0yMDkzMjg3Njg1LDEwNjQxMjkxODUsLTIwMjYxNDczOD
-YsMjcyNjIxMzcwLDc4ODE2ODMwMiw0ODIyMjY1NTgsMTU1MzM2
-OTU3N119
+eyJoaXN0b3J5IjpbMTAzNzk1MzkyNiwxMTY3MjQzMzM3LDEwMz
+Y1NDI3MDgsMzAxMjQ5NTgzLC0xMDkwNjcyNzQzLDE2NjY4MDM5
+NDAsLTIwOTMyODc2ODUsMTA2NDEyOTE4NSwtMjAyNjE0NzM4Ni
+wyNzI2MjEzNzAsNzg4MTY4MzAyLDQ4MjIyNjU1OCwxNTUzMzY5
+NTc3XX0=
 -->
