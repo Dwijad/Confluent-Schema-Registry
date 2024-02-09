@@ -143,11 +143,11 @@ To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` a
 
     Name:   SCHEMA_REGISTRY_JMX_HOSTNAME  
     Default value: Default hostname of the container.
-    Description: The schema compatibility type.
+    Description: JMX Hostname of the schema registry server. 
 
     Name:   SCHEMA_REGISTRY_JMX_PORT 
-    Default value: full
-    Description: The schema compatibility type.
+    Default value: 8080
+    Description: Schema registry JMX port.
 
 
 ### Kubernetes
@@ -161,7 +161,7 @@ export SCHEMA_REGISTRY_HOST_NAME
             fieldRef:
               fieldPath: status.podIP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY4ODQ1MzMzMiwtMTU0ODQwMzU5MiwxMT
+eyJoaXN0b3J5IjpbLTMzOTQ1Mjk1OCwtMTU0ODQwMzU5MiwxMT
 Y3MjQzMzM3LDEwMzY1NDI3MDgsMzAxMjQ5NTgzLC0xMDkwNjcy
 NzQzLDE2NjY4MDM5NDAsLTIwOTMyODc2ODUsMTA2NDEyOTE4NS
 wtMjAyNjE0NzM4NiwyNzI2MjEzNzAsNzg4MTY4MzAyLDQ4MjIy
