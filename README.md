@@ -121,13 +121,15 @@ To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` a
     Default value: GET,POST,PUT,DELETE,OPTIONS,HEAD
     Description: Set value to Jetty Access-Control-Allow-Origin header for specified methods.
        
-    Name:   ACCESS_CONTROL_ALLOW_METHODS  
-    Default value: GET,POST,PUT,DELETE,OPTIONS,HEAD
-    Description: Set value to Jetty Access-Control-Allow-Origin header for specified methods.
+    Name:  ACCESS_CONTROL_ALLOW_ORIGIN
+    Default value: *
+    Description: Set value for Jetty `Access-Control-Allow-Origin` header
      
+    Name:   SCHEMA_COMPATIBILITY_LEVEL   
+    Default value: full
+    Description: The schema compatibility type.
+    
  
- SCHEMA_COMPATIBILITY_LEVEL   
- HOST_NAME
  KAFKA_JMX_PORT
  KAFKA_JMX_HOSTNAME   
  SCHEMA_REGISTRY_JMX_OPTS   
@@ -145,9 +147,9 @@ export SCHEMA_REGISTRY_HOST_NAME
             fieldRef:
               fieldPath: status.podIP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUyMDIxNzUxMSwxMTY3MjQzMzM3LDEwMz
-Y1NDI3MDgsMzAxMjQ5NTgzLC0xMDkwNjcyNzQzLDE2NjY4MDM5
-NDAsLTIwOTMyODc2ODUsMTA2NDEyOTE4NSwtMjAyNjE0NzM4Ni
-wyNzI2MjEzNzAsNzg4MTY4MzAyLDQ4MjIyNjU1OCwxNTUzMzY5
-NTc3XX0=
+eyJoaXN0b3J5IjpbLTE1NDg0MDM1OTIsMTE2NzI0MzMzNywxMD
+M2NTQyNzA4LDMwMTI0OTU4MywtMTA5MDY3Mjc0MywxNjY2ODAz
+OTQwLC0yMDkzMjg3Njg1LDEwNjQxMjkxODUsLTIwMjYxNDczOD
+YsMjcyNjIxMzcwLDc4ODE2ODMwMiw0ODIyMjY1NTgsMTU1MzM2
+OTU3N119
 -->
