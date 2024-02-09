@@ -33,7 +33,8 @@ Build the docker image
     -e SCHEMA_REGISTRY_JMX_ENABLED="1" \
     dwijad/schema-registry:latest
 
-To disable JMX unset run the docker command without passing  
+To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` and `SCHEMA_REGISTRY_JMX_ENABLED` environment vriable.
+
  ### Environment variables:
  
  KAFKA_VERSION
@@ -78,8 +79,8 @@ export SCHEMA_REGISTRY_HOST_NAME
             fieldRef:
               fieldPath: status.podIP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NTg5NDA5NTcsMTAzNjU0MjcwOCwzMD
-EyNDk1ODMsLTEwOTA2NzI3NDMsMTY2NjgwMzk0MCwtMjA5MzI4
-NzY4NSwxMDY0MTI5MTg1LC0yMDI2MTQ3Mzg2LDI3MjYyMTM3MC
-w3ODgxNjgzMDIsNDgyMjI2NTU4LDE1NTMzNjk1NzddfQ==
+eyJoaXN0b3J5IjpbMTE2NzI0MzMzNywxMDM2NTQyNzA4LDMwMT
+I0OTU4MywtMTA5MDY3Mjc0MywxNjY2ODAzOTQwLC0yMDkzMjg3
+Njg1LDEwNjQxMjkxODUsLTIwMjYxNDczODYsMjcyNjIxMzcwLD
+c4ODE2ODMwMiw0ODIyMjY1NTgsMTU1MzM2OTU3N119
 -->
