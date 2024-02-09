@@ -152,18 +152,30 @@ To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` a
 
 ### Kubernetes
 
-```
+
 export SCHEMA_REGISTRY_HOST_NAME
-```        env:
+       env:
         # https://docs.confluent.io/6.0.0/schema-registry/docs/config.html#host-name
         - name: SCHEMA_REGISTRY_HOST_NAME
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
+#### Test
+
+$ curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" --data '{"schema": "{\"type\":\"record\",\"name\":\"Payment\",\"namespace\":\"io.confluent.examples.clients.basicavro\",\"fields\":[{\"name\":\"id\",\"type\":\"string\"},{\"name\":\"amount\",\"type\":\"double\"}]}"}' http://schema-registry-0:8081/subjects/test-value/versions
+{"id":1}
+
+$ curl -s "http://localhost:8081/subjects/" | jq
+[
+  "test-value"
+]
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NzYyMzg0NzMsLTMzOTQ1Mjk1OCwtMT
-U0ODQwMzU5MiwxMTY3MjQzMzM3LDEwMzY1NDI3MDgsMzAxMjQ5
-NTgzLC0xMDkwNjcyNzQzLDE2NjY4MDM5NDAsLTIwOTMyODc2OD
-UsMTA2NDEyOTE4NSwtMjAyNjE0NzM4NiwyNzI2MjEzNzAsNzg4
-MTY4MzAyLDQ4MjIyNjU1OCwxNTUzMzY5NTc3XX0=
+eyJoaXN0b3J5IjpbLTM1NDA5MTQ5OSwtMTg3NjIzODQ3MywtMz
+M5NDUyOTU4LC0xNTQ4NDAzNTkyLDExNjcyNDMzMzcsMTAzNjU0
+MjcwOCwzMDEyNDk1ODMsLTEwOTA2NzI3NDMsMTY2NjgwMzk0MC
+wtMjA5MzI4NzY4NSwxMDY0MTI5MTg1LC0yMDI2MTQ3Mzg2LDI3
+MjYyMTM3MCw3ODgxNjgzMDIsNDgyMjI2NTU4LDE1NTMzNjk1Nz
+ddfQ==
 -->
