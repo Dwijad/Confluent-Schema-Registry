@@ -32,7 +32,7 @@ Build the docker image
     -e SCHEMA_REGISTRY_JMX_ENABLED="1" \
     dwijad/schema-registry:latest
 
-To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` and `SCHEMA_REGISTRY_JMX_ENABLED` environment vriable.
+To disable JMX exe docker command without passing   `KAFKA_JMX_PORT` and `SCHEMA_REGISTRY_JMX_ENABLED` environment vriable.
 
  ### Environment variables:
 
@@ -195,10 +195,11 @@ To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` a
  - https://docs.confluent.io/platform/current/schema-registry/index.html
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MTY1MTQ2NzYsMTQ2NjYzMTM1MSwtMz
-MxNzYyNTc2LC0xODc2MjM4NDczLC0zMzk0NTI5NTgsLTE1NDg0
-MDM1OTIsMTE2NzI0MzMzNywxMDM2NTQyNzA4LDMwMTI0OTU4My
-wtMTA5MDY3Mjc0MywxNjY2ODAzOTQwLC0yMDkzMjg3Njg1LDEw
-NjQxMjkxODUsLTIwMjYxNDczODYsMjcyNjIxMzcwLDc4ODE2OD
-MwMiw0ODIyMjY1NTgsMTU1MzM2OTU3N119
+eyJoaXN0b3J5IjpbMzgzMjk0NDYzLC0xNDE2NTE0Njc2LDE0Nj
+Y2MzEzNTEsLTMzMTc2MjU3NiwtMTg3NjIzODQ3MywtMzM5NDUy
+OTU4LC0xNTQ4NDAzNTkyLDExNjcyNDMzMzcsMTAzNjU0MjcwOC
+wzMDEyNDk1ODMsLTEwOTA2NzI3NDMsMTY2NjgwMzk0MCwtMjA5
+MzI4NzY4NSwxMDY0MTI5MTg1LC0yMDI2MTQ3Mzg2LDI3MjYyMT
+M3MCw3ODgxNjgzMDIsNDgyMjI2NTU4LDE1NTMzNjk1NzddfQ==
+
 -->
