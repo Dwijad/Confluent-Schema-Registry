@@ -101,12 +101,15 @@ To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` a
     Default value: Empty string
     Description: The endpoint identification algorithm to validate the kafka server hostname using the server certificate.
         
-    Name:  KAFKASTORE_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM 
-    Default value: Empty string
-    Description: The endpoint identification algorithm to validate the kafka server hostname using the server certificate.   
+    Name:  KAFKASTORE_BOOTSTRAP_SERVERS 
+    Default value: test-kafka.default.svc.cluster.local:9092
+    Description: Kafka broker endpoint 
    
- KAFKASTORE_BOOTSTRAP_SERVERS   
- KAFKASTORE_TOPIC   
+    Name:  KAFKASTORE_TOPIC 
+    Default value: _schemas
+    Description: Kafka broker endpoint 
+        
+  
  KAFKASTORE_SECURITY_PROTOCOL   
  INTER_INSTANCE_PROTOCOL   
  ACCESS_CONTROL_ALLOW_METHODS
@@ -130,7 +133,7 @@ export SCHEMA_REGISTRY_HOST_NAME
             fieldRef:
               fieldPath: status.podIP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNjA3Njc0OTgsMTE2NzI0MzMzNywxMD
+eyJoaXN0b3J5IjpbLTE1NTk0NDQ5NTAsMTE2NzI0MzMzNywxMD
 M2NTQyNzA4LDMwMTI0OTU4MywtMTA5MDY3Mjc0MywxNjY2ODAz
 OTQwLC0yMDkzMjg3Njg1LDEwNjQxMjkxODUsLTIwMjYxNDczOD
 YsMjcyNjIxMzcwLDc4ODE2ODMwMiw0ODIyMjY1NTgsMTU1MzM2
