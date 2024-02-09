@@ -93,9 +93,18 @@ To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` a
     Default value: /u01/cnfkfk/etc/ssl/kafka.truststore.jks
     Description: Kafkastore SSL truststore location
     
-     
- KAFKASTORE_SSL_TRUSTSTORE_PASSWORD   
- KAFKASTORE_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM   
+    Name:  KAFKASTORE_SSL_TRUSTSTORE_PASSWORD
+    Default value: password
+    Description: Kafkastore SSL truststore password    
+
+    Name:  KAFKASTORE_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM 
+    Default value: Empty string
+    Description: The endpoint identification algorithm to validate the kafka server hostname using the server certificate.
+        
+    Name:  KAFKASTORE_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM 
+    Default value: Empty string
+    Description: The endpoint identification algorithm to validate the kafka server hostname using the server certificate.   
+   
  KAFKASTORE_BOOTSTRAP_SERVERS   
  KAFKASTORE_TOPIC   
  KAFKASTORE_SECURITY_PROTOCOL   
@@ -121,9 +130,9 @@ export SCHEMA_REGISTRY_HOST_NAME
             fieldRef:
               fieldPath: status.podIP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYzODE3Nzc0NCwxMTY3MjQzMzM3LDEwMz
-Y1NDI3MDgsMzAxMjQ5NTgzLC0xMDkwNjcyNzQzLDE2NjY4MDM5
-NDAsLTIwOTMyODc2ODUsMTA2NDEyOTE4NSwtMjAyNjE0NzM4Ni
-wyNzI2MjEzNzAsNzg4MTY4MzAyLDQ4MjIyNjU1OCwxNTUzMzY5
-NTc3XX0=
+eyJoaXN0b3J5IjpbLTEwNjA3Njc0OTgsMTE2NzI0MzMzNywxMD
+M2NTQyNzA4LDMwMTI0OTU4MywtMTA5MDY3Mjc0MywxNjY2ODAz
+OTQwLC0yMDkzMjg3Njg1LDEwNjQxMjkxODUsLTIwMjYxNDczOD
+YsMjcyNjIxMzcwLDc4ODE2ODMwMiw0ODIyMjY1NTgsMTU1MzM2
+OTU3N119
 -->
