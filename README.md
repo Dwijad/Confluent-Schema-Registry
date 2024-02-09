@@ -165,17 +165,25 @@ export SCHEMA_REGISTRY_HOST_NAME
 $ curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" --data '{"schema": "{\"type\":\"record\",\"name\":\"Payment\",\"namespace\":\"io.confluent.examples.clients.basicavro\",\"fields\":[{\"name\":\"id\",\"type\":\"string\"},{\"name\":\"amount\",\"type\":\"double\"}]}"}' http://schema-registry-0:8081/subjects/test-value/versions
 {"id":1}
 
-$ curl -s "http://localhost:8081/subjects/" | jq
+$ curl -s "http://schema-registry-0:8081/subjects/" | jq
 [
   "test-value"
 ]
 
+$ curl -s "http://schema-registry-0:8081/subjects/test-value/versions/1"|jq '.'
+{
+  "subject": "test-value",
+  "version": 1,
+  "id": 1,
+  "schema": "{\"type\":\"record\",\"name\":\"Payment\",\"namespace\":\"io.confluent.examples.clients.basicavro\",\"fields\":[{\"name\":\"id\",\"type\":\"string\"},{\"name\":\"amount\",\"type\":\"double\"}]}"
+}
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM1NDA5MTQ5OSwtMTg3NjIzODQ3MywtMz
-M5NDUyOTU4LC0xNTQ4NDAzNTkyLDExNjcyNDMzMzcsMTAzNjU0
-MjcwOCwzMDEyNDk1ODMsLTEwOTA2NzI3NDMsMTY2NjgwMzk0MC
-wtMjA5MzI4NzY4NSwxMDY0MTI5MTg1LC0yMDI2MTQ3Mzg2LDI3
-MjYyMTM3MCw3ODgxNjgzMDIsNDgyMjI2NTU4LDE1NTMzNjk1Nz
-ddfQ==
+eyJoaXN0b3J5IjpbLTE3OTk4Nzc0MDksLTE4NzYyMzg0NzMsLT
+MzOTQ1Mjk1OCwtMTU0ODQwMzU5MiwxMTY3MjQzMzM3LDEwMzY1
+NDI3MDgsMzAxMjQ5NTgzLC0xMDkwNjcyNzQzLDE2NjY4MDM5ND
+AsLTIwOTMyODc2ODUsMTA2NDEyOTE4NSwtMjAyNjE0NzM4Niwy
+NzI2MjEzNzAsNzg4MTY4MzAyLDQ4MjIyNjU1OCwxNTUzMzY5NT
+c3XX0=
 -->
