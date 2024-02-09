@@ -29,7 +29,7 @@ Build the docker image
 ### Run
     $ docker run -d \
     --name=schema-registry-0 \
-    -e KAFKA_JMX_PORT="8080" \
+    -e SCHEMA_REGISTRY_JMX_PORT="8080" \
     -e SCHEMA_REGISTRY_JMX_ENABLED="1" \
     dwijad/schema-registry:latest
 
@@ -161,9 +161,9 @@ export SCHEMA_REGISTRY_HOST_NAME
             fieldRef:
               fieldPath: status.podIP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzOTQ1Mjk1OCwtMTU0ODQwMzU5MiwxMT
-Y3MjQzMzM3LDEwMzY1NDI3MDgsMzAxMjQ5NTgzLC0xMDkwNjcy
-NzQzLDE2NjY4MDM5NDAsLTIwOTMyODc2ODUsMTA2NDEyOTE4NS
-wtMjAyNjE0NzM4NiwyNzI2MjEzNzAsNzg4MTY4MzAyLDQ4MjIy
-NjU1OCwxNTUzMzY5NTc3XX0=
+eyJoaXN0b3J5IjpbLTE4NzYyMzg0NzMsLTMzOTQ1Mjk1OCwtMT
+U0ODQwMzU5MiwxMTY3MjQzMzM3LDEwMzY1NDI3MDgsMzAxMjQ5
+NTgzLC0xMDkwNjcyNzQzLDE2NjY4MDM5NDAsLTIwOTMyODc2OD
+UsMTA2NDEyOTE4NSwtMjAyNjE0NzM4NiwyNzI2MjEzNzAsNzg4
+MTY4MzAyLDQ4MjIyNjU1OCwxNTUzMzY5NTc3XX0=
 -->
