@@ -12,7 +12,7 @@ Docker Schema Registry image for the Confluent Platform using Oracle JDK 17. Thi
 -   Oracle JDK (build 17.0.10+11-LTS-240)
 -   Oracle Java Cryptography Extension added
 -   SHA 256 sum checks for all downloads
--   JAVA_HOME environment variable/net tools set up
+-   JAVA_HOME environment variable and net tools set up
 
 ### Build
 
@@ -190,12 +190,15 @@ To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` a
       "schema": "{\"type\":\"record\",\"name\":\"Payment\",\"namespace\":\"io.confluent.examples.clients.basicavro\",\"fields\":[{\"name\":\"id\",\"type\":\"string\"},{\"name\":\"amount\",\"type\":\"double\"}]}"
     }
 
+### References
+
+ - https://docs.confluent.io/platform/current/schema-registry/index.html
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTAwNzE2MTMsLTMzMTc2MjU3NiwtMT
-g3NjIzODQ3MywtMzM5NDUyOTU4LC0xNTQ4NDAzNTkyLDExNjcy
-NDMzMzcsMTAzNjU0MjcwOCwzMDEyNDk1ODMsLTEwOTA2NzI3ND
-MsMTY2NjgwMzk0MCwtMjA5MzI4NzY4NSwxMDY0MTI5MTg1LC0y
-MDI2MTQ3Mzg2LDI3MjYyMTM3MCw3ODgxNjgzMDIsNDgyMjI2NT
-U4LDE1NTMzNjk1NzddfQ==
+eyJoaXN0b3J5IjpbMTQ2NjYzMTM1MSwtMzMxNzYyNTc2LC0xOD
+c2MjM4NDczLC0zMzk0NTI5NTgsLTE1NDg0MDM1OTIsMTE2NzI0
+MzMzNywxMDM2NTQyNzA4LDMwMTI0OTU4MywtMTA5MDY3Mjc0My
+wxNjY2ODAzOTQwLC0yMDkzMjg3Njg1LDEwNjQxMjkxODUsLTIw
+MjYxNDczODYsMjcyNjIxMzcwLDc4ODE2ODMwMiw0ODIyMjY1NT
+gsMTU1MzM2OTU3N119
 -->
