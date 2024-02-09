@@ -129,12 +129,23 @@ To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` a
     Default value: full
     Description: The schema compatibility type.
     
- 
- KAFKA_JMX_PORT
- KAFKA_JMX_HOSTNAME   
- SCHEMA_REGISTRY_JMX_OPTS   
- KAFKA_HEAP_OPTS   
-  KAFKA_OPTS
+    Name:   SCHEMA_REGISTRY_JMX_OPTS   
+    Default value: full
+    Description: The schema compatibility type.
+
+    Name:   SCHEMA_REGISTRY_JMX_ENABLED   
+    Default value: full
+    Description: The schema compatibility type.
+         
+=$SCHEMA_REGISTRY_JMX_OPTS  \
+
+=$SCHEMA_REGISTRY_JMX_ENABLED  \
+
+SCHEMA_REGISTRY_HOST_NAME=$SCHEMA_REGISTRY_HOST_NAME  \
+
+SCHEMA_REGISTRY_JMX_HOSTNAME=$SCHEMA_REGISTRY_JMX_HOSTNAME  \
+
+SCHEMA_REGISTRY_JMX_PORT=$SCHEMA_REGISTRY_JMX_PORT
 
 ### Kubernetes
 
@@ -147,9 +158,9 @@ export SCHEMA_REGISTRY_HOST_NAME
             fieldRef:
               fieldPath: status.podIP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NDg0MDM1OTIsMTE2NzI0MzMzNywxMD
-M2NTQyNzA4LDMwMTI0OTU4MywtMTA5MDY3Mjc0MywxNjY2ODAz
-OTQwLC0yMDkzMjg3Njg1LDEwNjQxMjkxODUsLTIwMjYxNDczOD
-YsMjcyNjIxMzcwLDc4ODE2ODMwMiw0ODIyMjY1NTgsMTU1MzM2
-OTU3N119
+eyJoaXN0b3J5IjpbMTk0Mjc2MDE3OCwtMTU0ODQwMzU5MiwxMT
+Y3MjQzMzM3LDEwMzY1NDI3MDgsMzAxMjQ5NTgzLC0xMDkwNjcy
+NzQzLDE2NjY4MDM5NDAsLTIwOTMyODc2ODUsMTA2NDEyOTE4NS
+wtMjAyNjE0NzM4NiwyNzI2MjEzNzAsNzg4MTY4MzAyLDQ4MjIy
+NjU1OCwxNTUzMzY5NTc3XX0=
 -->
