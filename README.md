@@ -50,11 +50,13 @@ To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` a
     Description: Kafka files/folder owner 
     
     Name: SCHEMA_REGISTRY_VERSION 
-    Default value: kafka
-    Description: Kafka files/folder owner 
+    Default value: 3.5.0
+    Description: Schema registry version
      
+    Name: LISTENERS 
+    Default value: 3.5.0
+    Description: Comma-separated list of listeners that listen for API requests over either HTTP or HTTPS.
 
- SCHEMA_REGISTRY_VERSION
  LISTENERS 
  SSL_KEYSTORE_LOCATION   
  SSL_KEYSTORE_PASSWORD
@@ -94,9 +96,9 @@ export SCHEMA_REGISTRY_HOST_NAME
             fieldRef:
               fieldPath: status.podIP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4NDY0NzMsMTE2NzI0MzMzNywxMDM2NT
-QyNzA4LDMwMTI0OTU4MywtMTA5MDY3Mjc0MywxNjY2ODAzOTQw
-LC0yMDkzMjg3Njg1LDEwNjQxMjkxODUsLTIwMjYxNDczODYsMj
-cyNjIxMzcwLDc4ODE2ODMwMiw0ODIyMjY1NTgsMTU1MzM2OTU3
-N119
+eyJoaXN0b3J5IjpbLTM1MzE1MjYzMywxMTY3MjQzMzM3LDEwMz
+Y1NDI3MDgsMzAxMjQ5NTgzLC0xMDkwNjcyNzQzLDE2NjY4MDM5
+NDAsLTIwOTMyODc2ODUsMTA2NDEyOTE4NSwtMjAyNjE0NzM4Ni
+wyNzI2MjEzNzAsNzg4MTY4MzAyLDQ4MjIyNjU1OCwxNTUzMzY5
+NTc3XX0=
 -->
