@@ -23,14 +23,10 @@ spec:
       - image: dwijad/schema-registry:latest
         name: schema-registry
         env:
-        - name: KAFKA_JMX_PORT
-          value: "8080"
-        - name: SCHEMA_REGISTRY_JMX_OPTS
-          value: '-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.rmi.port=$(KAFKA_JMX_PORT) -Djava.rmi.server.hostname="${HOSTNAME}" -javaagent:/u01/cnfkfk/etc/schema-registry/jmx_prometheus_javaagent-0.20.0.jar=$(KAFKA_JMX_PORT):/u01/cnfkfk/etc/schema-registry/jmx-schema-registry-prometheus.yml'
-        - name: SASL_USER
-          value: "user1"
-        - name: SASL_PASSWORD
-          value: "password"
+    - name: SCHEMA_REGISTRY_JMX_PORT
+      value: "8080"
+    - name: SCHEMA_REGISTRY_JMX_ENABLED
+      value: "1"
         resources:  
           requests:
             memory: "1Gi"

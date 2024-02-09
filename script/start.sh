@@ -5,7 +5,7 @@ echo export KAFKA_JMX_HOSTNAME=$HOSTNAME >> .bashrc
 echo export SCHEMA_REGISTRY_HOST_NAME=$HOSTNAME >> .bashrc
 KAFKA_HOME=/u01/cnfkfk
 if [[ -n $SCHEMA_REGISTRY_JMX_ENABLED ]]; then
-echo export SCHEMA_REGISTRY_JMX_OPTS=\"-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.rmi.port='${KAFKA_JMX_PORT}' -Djava.rmi.server.hostname=$HOSTNAME -javaagent:$KAFKA_HOME/etc/schema-registry/jmx_prometheus_javaagent-0.20.0.jar='${KAFKA_JMX_PORT}':$KAFKA_HOME/etc/schema-registry/jmx-schema-registry-prometheus.yml\" >> .bashrc
+echo export SCHEMA_REGISTRY_JMX_OPTS=\"-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.rmi.port='${SCHEMA_REGISTRY_JMX_PORT}' -Djava.rmi.server.hostname=$HOSTNAME -javaagent:$KAFKA_HOME/etc/schema-registry/jmx_prometheus_javaagent-0.20.0.jar='${SCHEMA_REGISTRY_JMX_PORT}':$KAFKA_HOME/etc/schema-registry/jmx-schema-registry-prometheus.yml\" >> .bashrc
 fi
 . .bashrc
 
@@ -36,5 +36,5 @@ access.control.allow.origin=${ACCESS_CONTROL_ALLOW_ORIGIN:-*}
 schema.compatibility.level=${SCHEMA_COMPATIBILITY_LEVEL:-full}
 EOF
 
-bin/schema-registry-start etc/schema-registry/schema-registry.properties &
+exec bin/schema-registry-start etc/schema-registry/schema-registry.properties &
 sleep infinity
