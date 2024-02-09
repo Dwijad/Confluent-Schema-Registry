@@ -1,6 +1,6 @@
 # Schema registry
 
-Docker Schema Registry image using Confluent community version using Oracle JDK 17. This image was created with the purpose of offering the [Confluent Open Source Platform](https://www.confluent.io/product/confluent-open-source/) running on top of [Oracle JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) apart from integrating kafkastore keystore/truststore to the schema registry.
+Docker Schema Registry image using Confluent community version using Oracle JDK 17. This image was created with the purpose of offering the Confluent community version  running on top of [Oracle JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) apart from integrating kafkastore keystore/truststore to the schema registry.
 
 ### Supported tags and respective Dockerfile links
 
@@ -195,10 +195,10 @@ To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` a
  - https://docs.confluent.io/platform/current/schema-registry/index.html
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA2Nzk5Nzc4MywxNDY2NjMxMzUxLC0zMz
-E3NjI1NzYsLTE4NzYyMzg0NzMsLTMzOTQ1Mjk1OCwtMTU0ODQw
-MzU5MiwxMTY3MjQzMzM3LDEwMzY1NDI3MDgsMzAxMjQ5NTgzLC
-0xMDkwNjcyNzQzLDE2NjY4MDM5NDAsLTIwOTMyODc2ODUsMTA2
-NDEyOTE4NSwtMjAyNjE0NzM4NiwyNzI2MjEzNzAsNzg4MTY4Mz
-AyLDQ4MjIyNjU1OCwxNTUzMzY5NTc3XX0=
+eyJoaXN0b3J5IjpbODcxMzA2MjYwLDE0NjY2MzEzNTEsLTMzMT
+c2MjU3NiwtMTg3NjIzODQ3MywtMzM5NDUyOTU4LC0xNTQ4NDAz
+NTkyLDExNjcyNDMzMzcsMTAzNjU0MjcwOCwzMDEyNDk1ODMsLT
+EwOTA2NzI3NDMsMTY2NjgwMzk0MCwtMjA5MzI4NzY4NSwxMDY0
+MTI5MTg1LC0yMDI2MTQ3Mzg2LDI3MjYyMTM3MCw3ODgxNjgzMD
+IsNDgyMjI2NTU4LDE1NTMzNjk1NzddfQ==
 -->
