@@ -36,9 +36,24 @@ Build the docker image
 To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` and `SCHEMA_REGISTRY_JMX_ENABLED` environment vriable.
 
  ### Environment variables:
- 
- KAFKA_VERSION
- SCALA_VERSION
+
+    Name: UID
+    Default value: 1000
+    Description: User ID used to build Dockerfile   
+
+    Name: GID
+    Default value: 1000
+    Description: Group ID used to build Dockerfile
+
+    Name: USERNAME 
+    Default value: kafka
+    Description: Kafka files/folder owner 
+    
+    Name: SCHEMA_REGISTRY_VERSION 
+    Default value: kafka
+    Description: Kafka files/folder owner 
+     
+
  SCHEMA_REGISTRY_VERSION
  LISTENERS 
  SSL_KEYSTORE_LOCATION   
@@ -79,8 +94,9 @@ export SCHEMA_REGISTRY_HOST_NAME
             fieldRef:
               fieldPath: status.podIP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE2NzI0MzMzNywxMDM2NTQyNzA4LDMwMT
-I0OTU4MywtMTA5MDY3Mjc0MywxNjY2ODAzOTQwLC0yMDkzMjg3
-Njg1LDEwNjQxMjkxODUsLTIwMjYxNDczODYsMjcyNjIxMzcwLD
-c4ODE2ODMwMiw0ODIyMjY1NTgsMTU1MzM2OTU3N119
+eyJoaXN0b3J5IjpbMTE4NDY0NzMsMTE2NzI0MzMzNywxMDM2NT
+QyNzA4LDMwMTI0OTU4MywtMTA5MDY3Mjc0MywxNjY2ODAzOTQw
+LC0yMDkzMjg3Njg1LDEwNjQxMjkxODUsLTIwMjYxNDczODYsMj
+cyNjIxMzcwLDc4ODE2ODMwMiw0ODIyMjY1NTgsMTU1MzM2OTU3
+N119
 -->
