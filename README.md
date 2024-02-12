@@ -1,6 +1,6 @@
 # Schema registry
 
-Docker Schema Registry image for the Confluent Platform using Oracle JDK 17. This image was created with the purpose of offering the [Confluent Open Source Platform](https://www.confluent.io/product/confluent-open-source/) running on top of [Oracle JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) apart from integrating kafkastore keystore/truststore to the schema registry.
+Docker Schema Registry image for Confluent community version using Oracle JDK 17. This image was created with the purpose of offering  Confluent community version  running on top of [Oracle JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) apart from integrating kafkastore keystore/truststore to the schema registry.
 
 ### Supported tags and respective Dockerfile links
 
@@ -32,7 +32,7 @@ Build the docker image
     -e SCHEMA_REGISTRY_JMX_ENABLED="1" \
     dwijad/schema-registry:latest
 
-To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` and `SCHEMA_REGISTRY_JMX_ENABLED` environment vriable.
+To disable JMX execute  docker run command without passing   `KAFKA_JMX_PORT` and `SCHEMA_REGISTRY_JMX_ENABLED` environment vriable.
 
  ### Environment variables:
 
@@ -195,10 +195,11 @@ To disable JMX unset run the docker command without passing   `KAFKA_JMX_PORT` a
  - https://docs.confluent.io/platform/current/schema-registry/index.html
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ2NjYzMTM1MSwtMzMxNzYyNTc2LC0xOD
-c2MjM4NDczLC0zMzk0NTI5NTgsLTE1NDg0MDM1OTIsMTE2NzI0
-MzMzNywxMDM2NTQyNzA4LDMwMTI0OTU4MywtMTA5MDY3Mjc0My
-wxNjY2ODAzOTQwLC0yMDkzMjg3Njg1LDEwNjQxMjkxODUsLTIw
-MjYxNDczODYsMjcyNjIxMzcwLDc4ODE2ODMwMiw0ODIyMjY1NT
-gsMTU1MzM2OTU3N119
+eyJoaXN0b3J5IjpbLTE5MTY4NDQ1NTEsLTE0MTY1MTQ2NzYsMT
+Q2NjYzMTM1MSwtMzMxNzYyNTc2LC0xODc2MjM4NDczLC0zMzk0
+NTI5NTgsLTE1NDg0MDM1OTIsMTE2NzI0MzMzNywxMDM2NTQyNz
+A4LDMwMTI0OTU4MywtMTA5MDY3Mjc0MywxNjY2ODAzOTQwLC0y
+MDkzMjg3Njg1LDEwNjQxMjkxODUsLTIwMjYxNDczODYsMjcyNj
+IxMzcwLDc4ODE2ODMwMiw0ODIyMjY1NTgsMTU1MzM2OTU3N119
+
 -->
