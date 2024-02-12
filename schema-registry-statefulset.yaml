@@ -23,10 +23,10 @@ spec:
       - image: dwijad/schema-registry:latest
         name: schema-registry
         env:
-    - name: SCHEMA_REGISTRY_JMX_PORT
-      value: "8080"
-    - name: SCHEMA_REGISTRY_JMX_ENABLED
-      value: "1"
+        - name: SCHEMA_REGISTRY_JMX_PORT
+          value: "8080"
+        - name: SCHEMA_REGISTRY_JMX_ENABLED
+          value: "1"
         resources:  
           requests:
             memory: "1Gi"
