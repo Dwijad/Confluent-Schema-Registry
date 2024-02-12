@@ -22,19 +22,11 @@ spec:
       containers:
       - image: dwijad/schema-registry:latest
         name: schema-registry
-<<<<<<< HEAD
         env:
         - name: SCHEMA_REGISTRY_JMX_PORT
           value: "8080"
         - name: SCHEMA_REGISTRY_JMX_ENABLED
           value: "1"
-=======
-    env:
-    - name: SCHEMA_REGISTRY_JMX_PORT
-      value: "8080"
-    - name: SCHEMA_REGISTRY_JMX_ENABLED
-      value: "1"
->>>>>>> 3a312bc6138d503abb47548a8b3402063160e06a
         resources:  
           requests:
             memory: "1Gi"
