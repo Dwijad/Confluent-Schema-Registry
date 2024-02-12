@@ -22,7 +22,7 @@ spec:
       containers:
       - image: dwijad/schema-registry:latest
         name: schema-registry
-        env:
+    env:
     - name: SCHEMA_REGISTRY_JMX_PORT
       value: "8080"
     - name: SCHEMA_REGISTRY_JMX_ENABLED
